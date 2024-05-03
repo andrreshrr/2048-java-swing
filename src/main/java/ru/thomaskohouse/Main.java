@@ -11,9 +11,10 @@ import java.awt.event.KeyEvent;
 public class Main extends JFrame{
 
 
-    public static void createGUI() {
-        RoundedRectangle backRectangle = new RoundedRectangle(0, 0, Sizes.BACKGROUND_RECTANGLE.getValue(),
-                Sizes.BACKGROUND_RECTANGLE.getValue(), 30, 30,
+    public static void runGame() {
+        RoundedRectangle backRectangle = new RoundedRectangle(0, 0,
+                Sizes.BACKGROUND_RECTANGLE.getValue(), Sizes.BACKGROUND_RECTANGLE.getValue(),
+                Sizes.BACKGROUND_RECT_ARC_WIDTH.getValue(), Sizes.BACKGROUND_RECT_HEIGHT.getValue(),
                 PaletteColors.DARK_GRAY.getColor());
 
         JLayeredPane jLayeredPane = new JLayeredPane();
@@ -25,7 +26,8 @@ public class Main extends JFrame{
 
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 4; j++) {
-                RoundedRectangle rectangle = new RoundedRectangle(0, 0, 145, 145, 20, 20,
+                RoundedRectangle rectangle = new RoundedRectangle(0, 0, Sizes.GAME_RECTANGLE.getValue(),
+                        Sizes.GAME_RECTANGLE.getValue(), Sizes.GAME_RECT_ARC_WIDTH.getValue(), Sizes.GAME_RECT_ARC_HEIGHT.getValue(),
                         PaletteColors.LIGHT_GRAY.getColor());
                 rectangle.setOpaque(false);
                 rectangle.setBounds(49 + (Sizes.GAME_RECTANGLE.getValue() + 4) * j,
@@ -37,7 +39,7 @@ public class Main extends JFrame{
         }
 
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("Test frame");
+        JFrame frame = new JFrame("TFE");
         frame.getContentPane().setBackground(PaletteColors.LINEN.getColor());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -50,27 +52,83 @@ public class Main extends JFrame{
                 )
         );
         frame.pack();
+        Game game = new Game();
+
         frame.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP -> {
-                        System.out.println("UP");
-                        backRectangle.setValue(4);
-                        backRectangle.repaint();}
-                    case KeyEvent.VK_DOWN -> System.out.println("DOWN");
-                    case KeyEvent.VK_LEFT -> System.out.println("LEFT");
-                    case KeyEvent.VK_RIGHT -> System.out.println("RIGHT");
+                        System.out.println("Before UP");
+                        game.printMatrix();
+                        game.moveUp();
+                        System.out.println("After UP");
+                        game.printMatrix();
+
+                        jLayeredPane.repaint();
+                    }
+                    case KeyEvent.VK_DOWN -> {
+                        System.out.println("Before DOWN");
+                        game.printMatrix();
+                        game.moveDown();
+                        System.out.println("After DOWN");
+                        game.printMatrix();
+                        jLayeredPane.repaint();
+                    }
+                    case KeyEvent.VK_LEFT -> {
+
+                        System.out.println("Before LEFT");
+                        game.printMatrix();
+                        game.moveLeft();
+                        System.out.println("After LEFT");
+                        game.printMatrix();
+
+                        jLayeredPane.repaint();
+                    }
+                    case KeyEvent.VK_RIGHT -> {
+                        System.out.println("Before RIGHT");
+                        game.printMatrix();
+                        game.moveRight();
+                        System.out.println("After RIGHT");
+                        game.printMatrix();
+                        frame.getContentPane().repaint();
+
+                    }
                     default -> System.out.println("default");
                 }
             }
         });
         frame.setVisible(true);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    for (int i = 0; i < 4; i++) {
+                        for (int j = 0; j < 4; j++) {
+                            if (game.getValue(i, j) != -1){
+                                RoundedRectangle rectangle = new RoundedRectangle(0, 0, Sizes.GAME_RECTANGLE.getValue(),
+                                        Sizes.GAME_RECTANGLE.getValue(), Sizes.GAME_RECT_ARC_WIDTH.getValue(), Sizes.GAME_RECT_ARC_HEIGHT.getValue(),
+                                        PaletteColors.LIGHT_GRAY.getColor(), game.getValue(i, j));
+                                rectangle.setOpaque(false);
+                                rectangle.setBounds(49 + (Sizes.GAME_RECTANGLE.getValue() + 4) * j,
+                                        34 + (Sizes.GAME_RECTANGLE.getValue() + 4) * i,
+                                        Sizes.GAME_RECTANGLE.getValue(),
+                                        Sizes.GAME_RECTANGLE.getValue());
+                                jLayeredPane.add(rectangle, JLayeredPane.POPUP_LAYER);
+                            }
+                        }
+                    }
+                    System.out.println("thread good");
+                }
+
+            }
+        }).start();
     }
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createGUI();
+                runGame();
+
             }
         });
     }
