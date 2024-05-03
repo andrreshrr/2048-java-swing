@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="create field">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java" afterDir="false" />
+    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="add base game logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +243,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714737983481</updated>
-      <workItem from="1714737984460" duration="17105000" />
+      <workItem from="1714737984460" duration="21578000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -263,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714749542321</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add base game logic">
+      <option name="closed" value="true" />
+      <created>1714765854424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714765854425</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +278,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <MESSAGE value="create field" />
-    <option name="LAST_COMMIT_MESSAGE" value="create field" />
+    <MESSAGE value="add base game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="add base game logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

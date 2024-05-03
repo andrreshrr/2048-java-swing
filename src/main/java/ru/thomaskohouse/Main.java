@@ -10,6 +10,14 @@ import java.awt.event.KeyEvent;
 
 public class Main extends JFrame{
 
+    public static void repaintMatrix(Game game, RoundedRectangle[][] rectangles){
+        for (int i = 0; i < rectangles.length; i++) {
+            for (int j = 0; j < rectangles[i].length; j++) {
+                rectangles[i][j].setValue(game.getValue(i, j));
+                rectangles[i][j].repaint();
+            }
+        }
+    }
 
     public static void runGame() {
         RoundedRectangle backRectangle = new RoundedRectangle(0, 0,
@@ -23,7 +31,7 @@ public class Main extends JFrame{
         backRectangle.setOpaque(false);
         backRectangle.setBounds(Sizes.BACKGROUND_INDENT_X.getValue(), Sizes.BACKGROUND_INDENT_Y.getValue(),
                 Sizes.BACKGROUND_RECTANGLE.getValue(), Sizes.WINDOW_HEIGHT.getValue());
-
+        RoundedRectangle[][] rectangles = new RoundedRectangle[4][4];
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 4; j++) {
                 RoundedRectangle rectangle = new RoundedRectangle(0, 0, Sizes.GAME_RECTANGLE.getValue(),
@@ -34,6 +42,7 @@ public class Main extends JFrame{
                         34 + (Sizes.GAME_RECTANGLE.getValue() + 4) * i,
                         Sizes.GAME_RECTANGLE.getValue(),
                         Sizes.GAME_RECTANGLE.getValue());
+                rectangles[i][j] = rectangle;
                 jLayeredPane.add(rectangle, JLayeredPane.POPUP_LAYER);
             }
         }
@@ -42,8 +51,6 @@ public class Main extends JFrame{
         JFrame frame = new JFrame("TFE");
         frame.getContentPane().setBackground(PaletteColors.LINEN.getColor());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
         frame.getContentPane().add(jLayeredPane);
         frame.setPreferredSize(
                 new Dimension(
@@ -52,76 +59,26 @@ public class Main extends JFrame{
                 )
         );
         frame.pack();
-        Game game = new Game();
-
+        Game game = new Game(new int[][]{
+            {2, 4, 16, 32},
+            {64, 128, 256, 512},
+            {1024, 2048, -1, -1},
+            {-1, -1, -1, -1}
+        });
+        repaintMatrix(game, rectangles);
         frame.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
-                    case KeyEvent.VK_UP -> {
-                        System.out.println("Before UP");
-                        game.printMatrix();
-                        game.moveUp();
-                        System.out.println("After UP");
-                        game.printMatrix();
-
-                        jLayeredPane.repaint();
-                    }
-                    case KeyEvent.VK_DOWN -> {
-                        System.out.println("Before DOWN");
-                        game.printMatrix();
-                        game.moveDown();
-                        System.out.println("After DOWN");
-                        game.printMatrix();
-                        jLayeredPane.repaint();
-                    }
-                    case KeyEvent.VK_LEFT -> {
-
-                        System.out.println("Before LEFT");
-                        game.printMatrix();
-                        game.moveLeft();
-                        System.out.println("After LEFT");
-                        game.printMatrix();
-
-                        jLayeredPane.repaint();
-                    }
-                    case KeyEvent.VK_RIGHT -> {
-                        System.out.println("Before RIGHT");
-                        game.printMatrix();
-                        game.moveRight();
-                        System.out.println("After RIGHT");
-                        game.printMatrix();
-                        frame.getContentPane().repaint();
-
-                    }
+                    case KeyEvent.VK_UP -> game.moveUp();
+                    case KeyEvent.VK_DOWN -> game.moveDown();
+                    case KeyEvent.VK_LEFT -> game.moveLeft();
+                    case KeyEvent.VK_RIGHT -> game.moveRight();
                     default -> System.out.println("default");
                 }
+                repaintMatrix(game, rectangles);
             }
         });
         frame.setVisible(true);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    for (int i = 0; i < 4; i++) {
-                        for (int j = 0; j < 4; j++) {
-                            if (game.getValue(i, j) != -1){
-                                RoundedRectangle rectangle = new RoundedRectangle(0, 0, Sizes.GAME_RECTANGLE.getValue(),
-                                        Sizes.GAME_RECTANGLE.getValue(), Sizes.GAME_RECT_ARC_WIDTH.getValue(), Sizes.GAME_RECT_ARC_HEIGHT.getValue(),
-                                        PaletteColors.LIGHT_GRAY.getColor(), game.getValue(i, j));
-                                rectangle.setOpaque(false);
-                                rectangle.setBounds(49 + (Sizes.GAME_RECTANGLE.getValue() + 4) * j,
-                                        34 + (Sizes.GAME_RECTANGLE.getValue() + 4) * i,
-                                        Sizes.GAME_RECTANGLE.getValue(),
-                                        Sizes.GAME_RECTANGLE.getValue());
-                                jLayeredPane.add(rectangle, JLayeredPane.POPUP_LAYER);
-                            }
-                        }
-                    }
-                    System.out.println("thread good");
-                }
-
-            }
-        }).start();
     }
 
     public static void main(String[] args) {
