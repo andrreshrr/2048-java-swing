@@ -1,14 +1,36 @@
-package ru.thomaskohouse;
+package ru.thomaskohouse.gameengine;
 
-import ru.thomaskohouse.enums.Direction;
-import ru.thomaskohouse.enums.GameStates;
+import ru.thomaskohouse.gameengine.enums.GameStates;
 
 import java.util.Random;
 
 public class Game {
     private final int[][] matrix = new int[4][4];
-    private boolean isVictory;
+    private int score;
     private final Random random;
+
+    public Game() {
+        random = new Random();
+        initGame();
+    }
+
+    public Game(int[][] matrix){
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                this.matrix[i][j] = matrix[i][j];
+            }
+        }
+        score = 0;
+        random = new Random();
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getValue(int row, int col) {
+        return matrix[row][col];
+    }
 
     /**
      *
@@ -47,27 +69,17 @@ public class Game {
         }
     }
 
-    public Game() {
-        isVictory = false;
+    private void initGame(){
+        score = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 matrix[i][j] = -1;
             }
         }
-        random = new Random();
         updateRandomCell();
         updateRandomCell();
     }
 
-    Game(int[][] matrix){
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                this.matrix[i][j] = matrix[i][j];
-            }
-        }
-        isVictory = false;
-        random = new Random();
-    }
 
     public boolean[] moveLeft(){
         boolean[] changedRows = new boolean[4];
@@ -81,6 +93,7 @@ public class Game {
                         if (j > 1) j -= 2;
                     } else if ((k == 1) && (matrix[i][j] == matrix[i][j - 1]) && (matrix[i][j] > 0)){
                         matrix[i][j - 1] = matrix[i][j - 1] * 2;
+                        score += matrix[i][j - 1];
                         matrix[i][j] = -1;
                         changedRows[i] = true;
                     }
@@ -102,6 +115,7 @@ public class Game {
                         if (j < 2) j+=2;
                     } else if ((k == 1) && (matrix[i][j] == matrix[i][j+1]) && (matrix[i][j] > 0)) {
                         matrix[i][j + 1] = matrix[i][j + 1] * 2;
+                        score += matrix[i][j + 1];
                         matrix[i][j] = -1;
                     }
                 }
@@ -120,6 +134,7 @@ public class Game {
                         if (i < 2) i += 2;
                     } else if ((k == 1)&&(matrix[i][j] == matrix[i + 1][j]) && (matrix[i][j] > 0)) {
                         matrix[i + 1][j] = matrix[i][j] * 2;
+                        score += matrix[i + 1][j];
                         matrix[i][j] = -1;
                     }
                 }
@@ -139,6 +154,7 @@ public class Game {
                         if (i > 1) i -= 2;
                     } else if ((k == 1) && (matrix[i][j] == matrix[i - 1][j]) && (matrix[i][j] > 0)) {
                         matrix[i - 1][j] = matrix[i][j] * 2;
+                        score += matrix[i - 1][j];
                         matrix[i][j] = -1;
                     }
                 }
@@ -177,7 +193,7 @@ public class Game {
         }
     }
 
-    public int getValue(int row, int col) {
-        return matrix[row][col];
+    public void restart(){
+        initGame();
     }
 }

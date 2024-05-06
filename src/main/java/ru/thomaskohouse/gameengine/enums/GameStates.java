@@ -1,4 +1,4 @@
-package ru.thomaskohouse.enums;
+package ru.thomaskohouse.gameengine.enums;
 
 public enum GameStates {
     ACTIVE,

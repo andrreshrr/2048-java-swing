@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="base game without animation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangleMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangleVault.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/GameStates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="make win and lose messages">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RestartButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ScoreRectangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/GameStates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/enums/GameStates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java" afterDir="false" />
     </list>
@@ -128,6 +124,10 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.thomaskohouse.gameengine.enums" />
+      <recent name="ru.thomaskohouse.gameengine" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="ru.thomaskohouse" />
     </key>
@@ -140,7 +140,7 @@
       <module name="TFE-pc.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.thomaskohouse.enums.*" />
+          <option name="PATTERN" value="ru.thomaskohouse.gameengine.enums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -253,7 +253,7 @@
       <updated>1714737983481</updated>
       <workItem from="1714737984460" duration="22855000" />
       <workItem from="1714976071116" duration="4450000" />
-      <workItem from="1714981557921" duration="6366000" />
+      <workItem from="1714981557921" duration="18565000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -287,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714770966736</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="make win and lose messages">
+      <option name="closed" value="true" />
+      <created>1714987988152</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714987988152</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,25 +306,21 @@
     <MESSAGE value="create field" />
     <MESSAGE value="add base game logic" />
     <MESSAGE value="base game without animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="base game without animation" />
+    <MESSAGE value="make win and lose messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="make win and lose messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java</url>
-          <line>54</line>
+          <line>53</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java</url>
-          <line>26</line>
+          <line>25</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
