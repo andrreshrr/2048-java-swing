@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="make win and lose messages">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RestartButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ScoreRectangle.java" afterDir="false" />
+    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="OMG ALMOST GOOD ANIMATION">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/GameStates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/enums/GameStates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,27 +94,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.GameTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.GameTest.moveLeft.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.GameTest.moveRight.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.TFE-pc [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Gradle.Build TFE-pc.executor": "Run",
+    "Gradle.GameTest.executor": "Run",
+    "Gradle.GameTest.moveLeft.executor": "Run",
+    "Gradle.GameTest.moveRight.executor": "Run",
+    "Gradle.TFE-pc [:Main.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -228,10 +225,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.GameTest.moveRight" />
         <item itemvalue="Gradle.GameTest.moveLeft" />
         <item itemvalue="Gradle.GameTest" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +250,9 @@
       <updated>1714737983481</updated>
       <workItem from="1714737984460" duration="22855000" />
       <workItem from="1714976071116" duration="4450000" />
-      <workItem from="1714981557921" duration="18565000" />
+      <workItem from="1714981557921" duration="21314000" />
+      <workItem from="1715004258245" duration="2011000" />
+      <workItem from="1715198403617" duration="14443000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -295,11 +294,62 @@
       <option name="project" value="LOCAL" />
       <updated>1714987988152</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="make restart button &amp;&amp; keybindings">
+      <option name="closed" value="true" />
+      <created>1715001214287</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715001214287</updated>
+    </task>
+    <task id="LOCAL-00007" summary="very base animation">
+      <option name="closed" value="true" />
+      <created>1715200684170</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715200684170</updated>
+    </task>
+    <task id="LOCAL-00008" summary="animation with threads">
+      <option name="closed" value="true" />
+      <created>1715209048886</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715209048886</updated>
+    </task>
+    <task id="LOCAL-00009" summary="animation with timer">
+      <option name="closed" value="true" />
+      <created>1715209381478</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715209381478</updated>
+    </task>
+    <task id="LOCAL-00010" summary="OMG ALMOST GOOD ANIMATION">
+      <option name="closed" value="true" />
+      <created>1715209692718</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715209692718</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
@@ -307,7 +357,12 @@
     <MESSAGE value="add base game logic" />
     <MESSAGE value="base game without animation" />
     <MESSAGE value="make win and lose messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="make win and lose messages" />
+    <MESSAGE value="make restart button &amp;&amp; keybindings" />
+    <MESSAGE value="very base animation" />
+    <MESSAGE value="animation with threads" />
+    <MESSAGE value="animation with timer" />
+    <MESSAGE value="OMG ALMOST GOOD ANIMATION" />
+    <option name="LAST_COMMIT_MESSAGE" value="OMG ALMOST GOOD ANIMATION" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

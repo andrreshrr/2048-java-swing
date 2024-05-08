@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RoundedRectangle extends JPanel {
-    protected final int rectX;
-    protected final int rectY;
+    protected int rectX;
+    protected int rectY;
     protected final int width;
     protected final int height;
     protected final int arcWidth;

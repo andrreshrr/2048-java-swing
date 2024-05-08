@@ -21,6 +21,10 @@ public class RoundedRectangleVault extends RoundedRectangle {
         this.value  = value;
     }
 
+    public int getValue(){
+        return value;
+    }
+
     private Color defineColor(){
         Color result = color;
         switch (value){
@@ -41,10 +45,10 @@ public class RoundedRectangleVault extends RoundedRectangle {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(defineColor());
-        g.fillRoundRect(rectX, rectY, width, height, arcWidth, arcHeight);
         if (value != -1) {
+            super.paintComponent(g);
+            g.setColor(defineColor());
+            g.fillRoundRect(rectX, rectY, width, height, arcWidth, arcHeight);
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.PLAIN, 40));
             if (value < 10)
@@ -57,6 +61,26 @@ public class RoundedRectangleVault extends RoundedRectangle {
                 g.drawString(String.valueOf(value), getWidth() / 2 - 45, getHeight() / 2 + 10 );
             }
         }
+    }
+
+    public void moveTo(int xStep, int yStep, int xLeftLimit, int xRightLimit, int yUpLimit, int yDownLimit){
+        Rectangle currentBounds = getBounds();
+        if (currentBounds.x + xStep > xRightLimit){
+            currentBounds.x = xRightLimit;
+        } else if (currentBounds.x + xStep < xLeftLimit) {
+            currentBounds.x = xLeftLimit;
+        } else {
+            currentBounds.x += xStep;
+        }
+        if (currentBounds.y + yStep > yDownLimit){
+            currentBounds.y = yDownLimit;
+        } else if (currentBounds.y + yStep < yUpLimit) {
+            currentBounds.y = yUpLimit;
+        } else {
+            currentBounds.y += yStep;
+        }
+        setBounds(currentBounds);
+        repaint();
     }
 
 }

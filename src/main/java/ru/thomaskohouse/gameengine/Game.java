@@ -184,10 +184,11 @@ public class Game {
         return GameStates.LOSE;
     }
 
-    public void printMatrix(){
+    public void print(){
+        System.out.println("Score: " + score);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                System.out.print(matrix[i][j] + " ");
+                System.out.print("|" + matrix[i][j] + "|");
             }
             System.out.println();
         }
