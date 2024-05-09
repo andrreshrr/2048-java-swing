@@ -12,7 +12,6 @@ import java.awt.event.*;
 public class Main extends JFrame{
 
     public static boolean isGameOver = false;
-
     private static RoundedRectangleVault[][] rectangles;
     private static ScoreRectangle scoreRectangle;
     private static JLayeredPane jLayeredPane;
@@ -20,11 +19,12 @@ public class Main extends JFrame{
     private static RoundedRectangleMessage messageRectangle;
 
     public static void repaintField(){
+
         for (int i = 0; i < rectangles.length; i++) {
             for (int j = 0; j < rectangles[i].length; j++) {
                 rectangles[i][j].setValue(game.getValue(i, j));
-                rectangles[i][j].setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + 4) * j,
-                        Sizes.BACKGROUND_INDENT_Y.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + 4) * i,
+                rectangles[i][j].setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue() + (Sizes.GAME_RECTANGLE.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue()) * j,
+                        Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue() + (Sizes.GAME_RECTANGLE.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue()) * i,
                         Sizes.GAME_RECTANGLE.getValue(),
                         Sizes.GAME_RECTANGLE.getValue());
                 rectangles[i][j].repaint();
@@ -47,9 +47,9 @@ public class Main extends JFrame{
 
     private static int getNearestUp(int i, int j){
         if (i == 0){
-            return Sizes.BACKGROUND_INDENT_Y.getValue() + 4;
+            return Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue();
         } else if (rectangles[i-1][j].getValue() != -1) {
-            return rectangles[i-1][j].getBounds().y + 4 + Sizes.BACKGROUND_INDENT_Y.getValue();
+            return rectangles[i-1][j].getBounds().y + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue() + Sizes.GAME_RECTANGLE.getValue();
         } else {
             return getNearestUp(i - 1, j);
         }
@@ -57,9 +57,9 @@ public class Main extends JFrame{
 
     private static int getNearestLeft(int i, int j){
         if (j == 0){
-            return Sizes.BACKGROUND_INDENT_X.getValue() + 4;
+            return Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue();
         } else if (rectangles[i][j-1].getValue() != -1){
-            return rectangles[i][j-1].getBounds().x + 4 + Sizes.GAME_RECTANGLE.getValue();
+            return rectangles[i][j-1].getBounds().x + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue() + Sizes.GAME_RECTANGLE.getValue();
         }
         else {
             return getNearestLeft(i, j-1);
@@ -101,30 +101,31 @@ public class Main extends JFrame{
             case LEFT -> xStep = -1;
             case DOWN -> yStep = 1;
         }
-
+        boolean isNeedRepaintField = true;
         for (int i = 0; i < rectangles.length; i++){
             for (int j = 0; j < rectangles[i].length; j++){
                 if (rectangles[i][j].getValue() != -1) {
                     distance = getDistance(i, j, direction);
                     int stepCount = distance / frames;
                     if (stepCount == 0) continue;
+                    isNeedRepaintField = false;
                     int step = distance / stepCount;
                     Timer timer = new Timer(framePause, new ActionListener() {
                         private int i, j, yStep, xStep, counter;
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            if (counter > stepCount){
-                                ((Timer)e.getSource()).stop();
+                            if (counter < stepCount){
+                                rectangles[i][j].moveTo(step * xStep, step * yStep,
+                                        Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue(),
+                                        Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.GAME_RECTANGLE.getValue() - Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue(),
+                                        Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue(),
+                                        Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.GAME_RECTANGLE.getValue() - Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue());
+                                counter++;
                             } else if (counter == stepCount){
                                 repaintField();
                                 counter++;
                             } else {
-                                rectangles[i][j].moveTo(step * xStep, step * yStep,
-                                        Sizes.BACKGROUND_INDENT_X.getValue() + 4,
-                                        Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.GAME_RECTANGLE.getValue() - 4,
-                                        Sizes.BACKGROUND_INDENT_Y.getValue() + 4,
-                                        Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.GAME_RECTANGLE.getValue() - 4);
-                                counter++;
+                                ((Timer)e.getSource()).stop();
                             }
                         }
                         private ActionListener init (int i, int j, int xStep, int yStep){
@@ -141,6 +142,9 @@ public class Main extends JFrame{
                 }
            }
         }
+        if (isNeedRepaintField){
+            repaintField();
+        }
     }
 
     public static void moveGame(Direction direction){
@@ -153,7 +157,6 @@ public class Main extends JFrame{
             }
             try {
                 moveField(direction);
-
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -196,6 +199,7 @@ public class Main extends JFrame{
         jLayeredPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UP");
         jLayeredPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LEFT");
         jLayeredPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RIGHT");
+        jLayeredPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_R, 0), "REPAINT");
 
         jLayeredPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), "DOWN");
         jLayeredPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), "UP");
@@ -224,6 +228,13 @@ public class Main extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 moveGame(Direction.RIGHT);
+            }
+        });
+        jLayeredPane.getActionMap().put("REPAINT", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repaintField();
+                System.out.println("repaint");
             }
         });
 
@@ -270,8 +281,8 @@ public class Main extends JFrame{
                         Sizes.GAME_RECTANGLE.getValue(), Sizes.GAME_RECT_ARC_WIDTH.getValue(), Sizes.GAME_RECT_ARC_HEIGHT.getValue(),
                         PaletteColors.LIGHT_GRAY.getColor());
                 rectangle.setOpaque(false);
-                rectangle.setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + 4) * j,
-                        Sizes.BACKGROUND_INDENT_Y.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + 4) * i,
+                rectangle.setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue()) * j,
+                        Sizes.BACKGROUND_INDENT_Y.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue()) * i,
                         Sizes.GAME_RECTANGLE.getValue(),
                         Sizes.GAME_RECTANGLE.getValue());
                 jLayeredPane.add(rectangle, JLayeredPane.PALETTE_LAYER);
@@ -285,8 +296,8 @@ public class Main extends JFrame{
                         Sizes.GAME_RECTANGLE.getValue(), Sizes.GAME_RECT_ARC_WIDTH.getValue(), Sizes.GAME_RECT_ARC_HEIGHT.getValue(),
                         PaletteColors.LIGHT_GRAY.getColor());
                 rectangle.setOpaque(false);
-                rectangle.setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + 4) * j,
-                        Sizes.BACKGROUND_INDENT_Y.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + 4) * i,
+                rectangle.setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue()) * j,
+                        Sizes.BACKGROUND_INDENT_Y.getValue() + 4 + (Sizes.GAME_RECTANGLE.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue()) * i,
                         Sizes.GAME_RECTANGLE.getValue(),
                         Sizes.GAME_RECTANGLE.getValue());
                 rectangles[i][j] = rectangle;
@@ -314,11 +325,11 @@ public class Main extends JFrame{
             {-1, -1, -1, -1}
         });*/
         game = new Game();
-          /* game = new Game(new int[][]{
-                    {4, 2, -1, -1},
-                    {2, -1, -1, 4},
-                    {4, -1, -1, 2},
-                    {2, -1, 2, -1}
+           /*game = new Game(new int[][]{
+                    {2, 2, -1, -1},
+                    {-1, -1, -1, -1},
+                    {-1, -1, -1, -1},
+                    {-1, -1, -1, -1}
             });*/
         repaintField();
         setKeyBindings();

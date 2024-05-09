@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="OMG ALMOST GOOD ANIMATION">
+    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="base animation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +79,16 @@
     &quot;assignee&quot;: &quot;andrreshrr&quot;
   }
 }</component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="very base animation" />
+        <option name="rewordedMessage" value="base animation" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="816aded45d23398f9183573b9e127e9c90b778a9" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;git@github.com:andrreshrr/tfe.git&quot;,
@@ -252,7 +262,8 @@
       <workItem from="1714976071116" duration="4450000" />
       <workItem from="1714981557921" duration="21314000" />
       <workItem from="1715004258245" duration="2011000" />
-      <workItem from="1715198403617" duration="14443000" />
+      <workItem from="1715198403617" duration="14942000" />
+      <workItem from="1715256435541" duration="4112000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -334,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715209692718</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="base animation">
+      <option name="closed" value="true" />
+      <created>1715213096068</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213096068</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +381,8 @@
     <MESSAGE value="animation with threads" />
     <MESSAGE value="animation with timer" />
     <MESSAGE value="OMG ALMOST GOOD ANIMATION" />
-    <option name="LAST_COMMIT_MESSAGE" value="OMG ALMOST GOOD ANIMATION" />
+    <MESSAGE value="base animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="base animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -376,6 +396,16 @@
           <url>file://$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java</url>
           <line>25</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java</url>
+          <line>150</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
