@@ -3,4 +3,4 @@
 
 Управление - клавиши `W`, `A`, `S`, `D` или на стрелки
 test
-![](/home/andreyoskin/IdeaProjects/TFE-pc/Screenshot.png)
+![](Screenshot.png)
