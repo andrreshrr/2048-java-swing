@@ -163,9 +163,9 @@ public class Main extends JFrame{
                 case LEFT -> game.moveLeft();
                 case RIGHT -> game.moveRight();
             }
+
             moveField(direction);
 
-            game.print();
             switch (game.getGameState()) {
                 case WIN -> {
                     printWin();
@@ -253,17 +253,18 @@ public class Main extends JFrame{
     }
 
     public static void createGame() {
+
         scoreRectangle = new ScoreRectangle(0, 0,
                 Sizes.SCORE_RECTANGLE_WIDTH.getValue(), Sizes.SCORE_RECTANGLE_HEIGHT.getValue(),
                 Sizes.SCORE_RECT_ARC_WIDTH.getValue(), Sizes.SCORE_RECT_ARC_HEIGHT.getValue(),
-                PaletteColors.DARK_GRAY.getColor(),  PaletteColors.LIGHT_GRAY.getColor(), 0);
+                PaletteColors.DARK_GRAY.getColor(),  PaletteColors.LINEN.getColor(), 0);
 
         RoundedRectangle backRectangle = new RoundedRectangle(0, 0,
                 Sizes.BACKGROUND_RECTANGLE.getValue(), Sizes.BACKGROUND_RECTANGLE.getValue(),
                 Sizes.BACKGROUND_RECT_ARC_WIDTH.getValue(), Sizes.BACKGROUND_RECT_ARC_HEIGHT.getValue(),
                 PaletteColors.DARK_GRAY.getColor());
 
-        CustomButton customButton = new CustomButton("RESTART", PaletteColors.DARK_GRAY.getColor(), PaletteColors.LIGHT_GRAY.getColor());
+        CustomButton customButton = new CustomButton("RESTART", PaletteColors.DARK_GRAY.getColor(), PaletteColors.LINEN.getColor());
 
         jLayeredPane = new JLayeredPane();
         jLayeredPane.add(backRectangle, JLayeredPane.DEFAULT_LAYER);
@@ -322,6 +323,8 @@ public class Main extends JFrame{
                 )
         );
         frame.pack();
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
 
         game = new Game();
 

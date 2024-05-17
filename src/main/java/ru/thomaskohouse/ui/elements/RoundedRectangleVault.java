@@ -3,10 +3,7 @@ package ru.thomaskohouse.ui.elements;
 import ru.thomaskohouse.enums.PaletteColors;
 import ru.thomaskohouse.enums.Sizes;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Font;
-import java.awt.Rectangle;
+import java.awt.*;
 
 public class RoundedRectangleVault extends RoundedRectangle {
     private int value;
@@ -46,9 +43,17 @@ public class RoundedRectangleVault extends RoundedRectangle {
     public void paintComponent(Graphics g) {
         if (value != -1) {
             super.paintComponent(g);
+            Graphics2D graphics2D = (Graphics2D) g;
+            graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON);
+            graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             g.setColor(defineColor());
             g.fillRoundRect(rectX, rectY, width, height, arcWidth, arcHeight);
-            g.setColor(Color.WHITE);
+            if (value < 8)
+                g.setColor(PaletteColors.SMALL_VAL.getColor());
+            else
+                g.setColor(PaletteColors.BIG_VAL.getColor());
             g.setFont(new Font("Arial", Font.PLAIN, Sizes.RECTANGLE_VAULT_FONT.getValue()));
             if (value < 10)
                 g.drawString(String.valueOf(value), getWidth() / 2 - 10, getHeight() / 2 + 10 );

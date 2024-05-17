@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="moving animation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/CustomButton.java" afterDir="false" />
+    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="add tests">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RestartButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/RoundedRectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/RoundedRectangleMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangleVault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/RoundedRectangleVault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ScoreRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/ScoreRectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,8 +111,10 @@
     "Application.Main.executor": "Run",
     "Gradle.Build TFE-pc.executor": "Run",
     "Gradle.GameTest.executor": "Run",
+    "Gradle.GameTest.moveDown.executor": "Run",
     "Gradle.GameTest.moveLeft.executor": "Run",
     "Gradle.GameTest.moveRight.executor": "Run",
+    "Gradle.GameTest.moveUp.executor": "Run",
     "Gradle.TFE-pc [:Main.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -130,6 +122,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/andreyoskin/IdeaProjects/TFE-pc/screenshoot/Screenshot from 2024-05-18 01-03-53.png",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -155,13 +148,11 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="ru.thomaskohouse.Main" />
       <module name="TFE-pc.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.thomaskohouse.gameengine.enums.*" />
+          <option name="PATTERN" value="ru.thomaskohouse.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -193,7 +184,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="GameTest.moveLeft" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GameTest.moveDown" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -206,7 +197,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.thomaskohouse.GameTest.moveLeft&quot;" />
+            <option value="&quot;ru.thomaskohouse.GameTest.moveDown&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -241,18 +232,44 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="GameTest.moveUp" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.thomaskohouse.GameTest.moveUp&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.GameTest.moveDown" />
+      <item itemvalue="Gradle.GameTest.moveUp" />
       <item itemvalue="Gradle.GameTest" />
-      <item itemvalue="Gradle.GameTest.moveLeft" />
       <item itemvalue="Gradle.GameTest.moveRight" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Gradle.GameTest.moveRight" />
-        <item itemvalue="Gradle.GameTest.moveLeft" />
         <item itemvalue="Gradle.GameTest" />
+        <item itemvalue="Gradle.GameTest.moveDown" />
+        <item itemvalue="Gradle.GameTest.moveUp" />
+        <item itemvalue="Gradle.GameTest.moveRight" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +295,8 @@
       <workItem from="1715004258245" duration="2011000" />
       <workItem from="1715198403617" duration="14942000" />
       <workItem from="1715256435541" duration="4441000" />
-      <workItem from="1715975409237" duration="2507000" />
+      <workItem from="1715975409237" duration="2927000" />
+      <workItem from="1715978435817" duration="5389000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -376,7 +394,39 @@
       <option name="project" value="LOCAL" />
       <updated>1715260768469</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="refactor ui logic">
+      <option name="closed" value="true" />
+      <created>1715977955426</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715977955426</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add antialiasing and original colors">
+      <option name="closed" value="true" />
+      <created>1715980953830</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715980953830</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update game engine">
+      <option name="closed" value="true" />
+      <created>1715982117249</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715982117249</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add tests">
+      <option name="closed" value="true" />
+      <created>1715983236449</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715983236449</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,20 +456,19 @@
     <MESSAGE value="OMG ALMOST GOOD ANIMATION" />
     <MESSAGE value="base animation" />
     <MESSAGE value="moving animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="moving animation" />
+    <MESSAGE value="refactor ui logic" />
+    <MESSAGE value="add antialiasing and original colors" />
+    <MESSAGE value="update game engine" />
+    <MESSAGE value="add tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java</url>
-          <line>53</line>
+          <line>71</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ru/thomaskohouse/GameTest.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java</url>

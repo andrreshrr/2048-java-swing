@@ -15,11 +15,11 @@ public class Game {
     }
 
     public Game(int[][] matrix){
+        random = new Random();
         for (int i = 0; i < matrix.length; i++) {
             System.arraycopy(matrix[i], 0, this.matrix[i], 0, matrix[i].length);
         }
         score = 0;
-        random = new Random();
     }
 
     public int getScore() {
@@ -80,6 +80,7 @@ public class Game {
 
 
     public void moveLeft(){
+        boolean validMove = false;
         for (int k = 0; k < 3; k++) {
             for (int i = 0; i < 4; i++) {       //сжимаем
                 for (int j = 1; j < 4; j++) {
@@ -87,19 +88,24 @@ public class Game {
                         int temp = matrix[i][j - 1];
                         matrix[i][j - 1] = matrix[i][j];
                         matrix[i][j] = temp;
+                        validMove = true;
                         if (j > 1) j -= 2;
                     } else if ((k == 1) && (matrix[i][j] == matrix[i][j - 1]) && (matrix[i][j] > 0)){
                         matrix[i][j - 1] = matrix[i][j - 1] * 2;
                         score += matrix[i][j - 1];
                         matrix[i][j] = -1;
+                        validMove = true;
                     }
                 }
             }
         }
-        updateRandomCell();
+        if (validMove){
+            updateRandomCell();
+        }
     }
 
     public void moveRight(){
+        boolean validMove = false;
         for (int k = 0; k < 3; k++) {
             for (int i = 0; i < 4; i++) {
                 for (int j = 2; j >= 0; j--) {
@@ -107,18 +113,24 @@ public class Game {
                         int temp = matrix[i][j + 1];
                         matrix[i][j + 1] = matrix[i][j];
                         matrix[i][j] = temp;
+                        validMove = true;
                         if (j < 2) j+=2;
                     } else if ((k == 1) && (matrix[i][j] == matrix[i][j+1]) && (matrix[i][j] > 0)) {
                         matrix[i][j + 1] = matrix[i][j + 1] * 2;
                         score += matrix[i][j + 1];
                         matrix[i][j] = -1;
+                        validMove = true;
                     }
                 }
             }
         }
-        updateRandomCell();
+
+        if (validMove){
+            updateRandomCell();
+        }
     }
     public void moveDown(){
+        boolean validMove = false;
         for (int k = 0; k < 3; k ++) {
             for (int j = 0; j < 4; j++) {
                 for (int i = 2; i >= 0; i--) {
@@ -126,19 +138,25 @@ public class Game {
                         int temp = matrix[i + 1][j];
                         matrix[i + 1][j] = matrix[i][j];
                         matrix[i][j] = temp;
+                        validMove = true;
                         if (i < 2) i += 2;
                     } else if ((k == 1)&&(matrix[i][j] == matrix[i + 1][j]) && (matrix[i][j] > 0)) {
                         matrix[i + 1][j] = matrix[i][j] * 2;
                         score += matrix[i + 1][j];
                         matrix[i][j] = -1;
+                        validMove = true;
                     }
                 }
             }
         }
-        updateRandomCell();
+
+        if (validMove){
+            updateRandomCell();
+        }
     }
 
     public void moveUp(){
+        boolean validMove = false;
         for (int k = 0; k < 3; k++) {
             for (int j = 0; j < 4; j++) {
                 for (int i = 1; i < 4; i++) {
@@ -146,16 +164,20 @@ public class Game {
                         int temp = matrix[i - 1][j];
                         matrix[i - 1][j] = matrix[i][j];
                         matrix[i][j] = temp;
+                        validMove = true;
                         if (i > 1) i -= 2;
                     } else if ((k == 1) && (matrix[i][j] == matrix[i - 1][j]) && (matrix[i][j] > 0)) {
                         matrix[i - 1][j] = matrix[i][j] * 2;
                         score += matrix[i - 1][j];
                         matrix[i][j] = -1;
+                        validMove = true;
                     }
                 }
             }
         }
-        updateRandomCell();
+        if (validMove){
+            updateRandomCell();
+        }
     }
 
     public GameStates getGameState(){
@@ -166,7 +188,6 @@ public class Game {
                 }
             }
         }
-
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 4; j++){
                 if (((matrix[i][j] == -1))|| ((i > 1) && (matrix[i - 1][j] == matrix[i][j])) ||
@@ -175,7 +196,6 @@ public class Game {
                 }
             }
         }
-
         return GameStates.LOSE;
     }
 

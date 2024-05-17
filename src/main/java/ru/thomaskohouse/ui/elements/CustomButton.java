@@ -3,10 +3,7 @@ package ru.thomaskohouse.ui.elements;
 import ru.thomaskohouse.enums.Sizes;
 
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Dimension;
+import java.awt.*;
 
 public class CustomButton extends JButton {
     private final Color backgroundColor;
@@ -21,6 +18,11 @@ public class CustomButton extends JButton {
 
     @Override
     protected void paintComponent(Graphics g) {
+        Graphics2D graphics2D = (Graphics2D) g;
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g.setColor(backgroundColor);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(fontColor);

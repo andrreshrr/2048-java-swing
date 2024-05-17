@@ -1,9 +1,7 @@
 package ru.thomaskohouse.ui.elements;
 
 import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Dimension;
+import java.awt.*;
 
 public class RoundedRectangle extends JPanel {
     protected int rectX;
@@ -27,6 +25,9 @@ public class RoundedRectangle extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D graphics2D = (Graphics2D) g;
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
         g.setColor(color);
         g.fillRoundRect(rectX, rectY, width, height, arcWidth, arcHeight);
     }
