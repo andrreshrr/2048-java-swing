@@ -1,6 +1,6 @@
 package ru.thomaskohouse.enums;
 
-import java.awt.*;
+import java.awt.Color;
 
 public enum PaletteColors {
     DARK_GRAY(new Color(144, 144, 144)),
@@ -17,11 +17,10 @@ public enum PaletteColors {
     RED9(new Color(218, 30, 55)),
     RED10(new Color(224, 30, 55)),
     RED11(new Color(236, 31, 58)),
-    RED12(new Color(250, 75, 5)),
     WIN_MESSAGE(new Color(213, 205, 78)),
     LOSE_MESSAGE(new Color(213, 0, 78)),;
 
-    private Color color;
+    private final Color color;
 
     PaletteColors(Color color) {
         this.color = color;

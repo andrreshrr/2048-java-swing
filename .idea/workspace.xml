@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="base animation">
+    <list default="true" id="f35af826-c64f-4c7b-a668-45908ee7f870" name="Changes" comment="moving animation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/CustomButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RestartButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/RoundedRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/RoundedRectangleMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/RoundedRectangleVault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/RoundedRectangleVault.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ScoreRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/ui/elements/ScoreRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/PaletteColors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/thomaskohouse/gameengine/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +104,9 @@
     &quot;accountId&quot;: &quot;c0df4595-a750-4b8a-b436-3f380f47c535&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -123,6 +135,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "vue.rearranger.settings.migration": "true"
   }
@@ -132,6 +145,7 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.thomaskohouse.ui.elements" />
       <recent name="ru.thomaskohouse.gameengine.enums" />
       <recent name="ru.thomaskohouse.gameengine" />
     </key>
@@ -263,7 +277,8 @@
       <workItem from="1714981557921" duration="21314000" />
       <workItem from="1715004258245" duration="2011000" />
       <workItem from="1715198403617" duration="14942000" />
-      <workItem from="1715256435541" duration="4112000" />
+      <workItem from="1715256435541" duration="4441000" />
+      <workItem from="1715975409237" duration="2507000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -353,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715213096068</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="moving animation">
+      <option name="closed" value="true" />
+      <created>1715260768469</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715260768469</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +405,8 @@
     <MESSAGE value="animation with timer" />
     <MESSAGE value="OMG ALMOST GOOD ANIMATION" />
     <MESSAGE value="base animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="base animation" />
+    <MESSAGE value="moving animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="moving animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -399,13 +423,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java</url>
-          <line>124</line>
+          <line>133</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/Main.java</url>
-          <line>150</line>
+          <line>158</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/thomaskohouse/enums/Sizes.java</url>
+          <line>3</line>
+          <properties field="WINDOW_WIDTH" class="ru.thomaskohouse.enums.Sizes" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -16,9 +16,7 @@ public class Game {
 
     public Game(int[][] matrix){
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                this.matrix[i][j] = matrix[i][j];
-            }
+            System.arraycopy(matrix[i], 0, this.matrix[i], 0, matrix[i].length);
         }
         score = 0;
         random = new Random();
@@ -81,8 +79,7 @@ public class Game {
     }
 
 
-    public boolean[] moveLeft(){
-        boolean[] changedRows = new boolean[4];
+    public void moveLeft(){
         for (int k = 0; k < 3; k++) {
             for (int i = 0; i < 4; i++) {       //сжимаем
                 for (int j = 1; j < 4; j++) {
@@ -95,13 +92,11 @@ public class Game {
                         matrix[i][j - 1] = matrix[i][j - 1] * 2;
                         score += matrix[i][j - 1];
                         matrix[i][j] = -1;
-                        changedRows[i] = true;
                     }
                 }
             }
         }
         updateRandomCell();
-        return changedRows;
     }
 
     public void moveRight(){

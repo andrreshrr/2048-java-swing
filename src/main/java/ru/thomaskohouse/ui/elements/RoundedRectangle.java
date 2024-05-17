@@ -1,7 +1,9 @@
-package ru.thomaskohouse;
+package ru.thomaskohouse.ui.elements;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Dimension;
 
 public class RoundedRectangle extends JPanel {
     protected int rectX;
@@ -12,8 +14,7 @@ public class RoundedRectangle extends JPanel {
     protected final int arcHeight;
     protected final Color color;
 
-
-    RoundedRectangle(int rectX, int rectY, int width, int height, int arcWidth, int arcHeight, Color color) {
+    public RoundedRectangle(int rectX, int rectY, int width, int height, int arcWidth, int arcHeight, Color color) {
         this.rectX = rectX;
         this.rectY = rectY;
         this.width = width;
@@ -23,9 +24,8 @@ public class RoundedRectangle extends JPanel {
         this.arcHeight = arcHeight;
     }
 
-
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(color);
         g.fillRoundRect(rectX, rectY, width, height, arcWidth, arcHeight);

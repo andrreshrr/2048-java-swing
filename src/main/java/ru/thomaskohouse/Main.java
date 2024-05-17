@@ -4,10 +4,21 @@ import ru.thomaskohouse.enums.Direction;
 import ru.thomaskohouse.enums.PaletteColors;
 import ru.thomaskohouse.enums.Sizes;
 import ru.thomaskohouse.gameengine.Game;
+import ru.thomaskohouse.ui.elements.*;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.Timer;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.AbstractAction;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 public class Main extends JFrame{
 
@@ -18,8 +29,7 @@ public class Main extends JFrame{
     private static Game game;
     private static RoundedRectangleMessage messageRectangle;
 
-    public static void repaintField(){
-
+    public static void repaintGameField(){
         for (int i = 0; i < rectangles.length; i++) {
             for (int j = 0; j < rectangles[i].length; j++) {
                 rectangles[i][j].setValue(game.getValue(i, j));
@@ -88,13 +98,12 @@ public class Main extends JFrame{
 
     }
 
-    public static void moveField(Direction direction) throws InterruptedException {
+    public static void moveField(Direction direction) {
         int frames = 50;
-
         int mills = 1000;
         int framePause = mills / frames;
         int xStep = 0, yStep = 0;
-        int distance = 0;
+        int distance;
         switch (direction) {
             case UP -> yStep = -1;
             case RIGHT -> xStep = 1;
@@ -115,14 +124,14 @@ public class Main extends JFrame{
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             if (counter < stepCount){
-                                rectangles[i][j].moveTo(step * xStep, step * yStep,
+                                rectangles[i][j].move(step * xStep, step * yStep,
                                         Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue(),
                                         Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.GAME_RECTANGLE.getValue() - Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue(),
                                         Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue(),
                                         Sizes.BACKGROUND_INDENT_Y.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.GAME_RECTANGLE.getValue() - Sizes.DISTANCE_BETWEEN_GAME_RECTANGLE.getValue());
                                 counter++;
                             } else if (counter == stepCount){
-                                repaintField();
+                                repaintGameField();
                                 counter++;
                             } else {
                                 ((Timer)e.getSource()).stop();
@@ -138,12 +147,11 @@ public class Main extends JFrame{
                         }
                     }.init(i, j, xStep, yStep));
                     timer.start();
-
                 }
            }
         }
         if (isNeedRepaintField){
-            repaintField();
+            repaintGameField();
         }
     }
 
@@ -155,11 +163,8 @@ public class Main extends JFrame{
                 case LEFT -> game.moveLeft();
                 case RIGHT -> game.moveRight();
             }
-            try {
-                moveField(direction);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            moveField(direction);
+
             game.print();
             switch (game.getGameState()) {
                 case WIN -> {
@@ -175,14 +180,14 @@ public class Main extends JFrame{
     }
 
     public static void printWin(){
-        printMessage( "You win!", PaletteColors.WIN_MESSAGE.getColor());
+        printModalMessage( "You win!", PaletteColors.WIN_MESSAGE.getColor());
     }
 
     public static void printLose(){
-        printMessage( "You lose.", PaletteColors.LOSE_MESSAGE.getColor());
+        printModalMessage( "You lose.", PaletteColors.LOSE_MESSAGE.getColor());
     }
 
-    public static void printMessage(String message, Color color){
+    public static void printModalMessage(String message, Color color){
         messageRectangle = new RoundedRectangleMessage(0, 0, Sizes.BACKGROUND_RECTANGLE.getValue(),
                 Sizes.BACKGROUND_RECTANGLE.getValue(), Sizes.BACKGROUND_RECT_ARC_WIDTH.getValue(),
                 Sizes.BACKGROUND_RECT_ARC_HEIGHT.getValue(), Color.GRAY, color, message);
@@ -233,7 +238,7 @@ public class Main extends JFrame{
         jLayeredPane.getActionMap().put("REPAINT", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                repaintField();
+                repaintGameField();
                 System.out.println("repaint");
             }
         });
@@ -243,11 +248,11 @@ public class Main extends JFrame{
     public static void restartGame(){
         isGameOver = false;
         game.restart();
-        repaintField();
+        repaintGameField();
         jLayeredPane.remove(messageRectangle);
     }
 
-    public static void runGame() {
+    public static void createGame() {
         scoreRectangle = new ScoreRectangle(0, 0,
                 Sizes.SCORE_RECTANGLE_WIDTH.getValue(), Sizes.SCORE_RECTANGLE_HEIGHT.getValue(),
                 Sizes.SCORE_RECT_ARC_WIDTH.getValue(), Sizes.SCORE_RECT_ARC_HEIGHT.getValue(),
@@ -258,14 +263,14 @@ public class Main extends JFrame{
                 Sizes.BACKGROUND_RECT_ARC_WIDTH.getValue(), Sizes.BACKGROUND_RECT_ARC_HEIGHT.getValue(),
                 PaletteColors.DARK_GRAY.getColor());
 
-        RestartButton restartButton = new RestartButton("RESTART", PaletteColors.DARK_GRAY.getColor(), PaletteColors.LIGHT_GRAY.getColor());
+        CustomButton customButton = new CustomButton("RESTART", PaletteColors.DARK_GRAY.getColor(), PaletteColors.LIGHT_GRAY.getColor());
 
         jLayeredPane = new JLayeredPane();
         jLayeredPane.add(backRectangle, JLayeredPane.DEFAULT_LAYER);
         jLayeredPane.add(scoreRectangle, JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane.add(restartButton, JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane.add(customButton, JLayeredPane.DEFAULT_LAYER);
 
-        restartButton.setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.SCORE_RECTANGLE_WIDTH.getValue(),
+        customButton.setBounds(Sizes.BACKGROUND_INDENT_X.getValue() + Sizes.BACKGROUND_RECTANGLE.getValue() - Sizes.SCORE_RECTANGLE_WIDTH.getValue(),
                 Sizes.SCORE_RECT_INDENT_Y.getValue(), Sizes.SCORE_RECTANGLE_WIDTH.getValue(),  Sizes.SCORE_RECTANGLE_HEIGHT.getValue());
 
         scoreRectangle.setOpaque(false);
@@ -306,7 +311,7 @@ public class Main extends JFrame{
         }
 
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("TFFE");
+        JFrame frame = new JFrame("2048");
         frame.getContentPane().setBackground(PaletteColors.LINEN.getColor());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(jLayeredPane);
@@ -318,23 +323,12 @@ public class Main extends JFrame{
         );
         frame.pack();
 
-      /*  Game game = new Game(new int[][]{
-            {2, 4, 16, 32},
-            {64, 128, 256, 512},
-            {1024, 1024, -1, -1},
-            {-1, -1, -1, -1}
-        });*/
         game = new Game();
-           /*game = new Game(new int[][]{
-                    {2, 2, -1, -1},
-                    {-1, -1, -1, -1},
-                    {-1, -1, -1, -1},
-                    {-1, -1, -1, -1}
-            });*/
-        repaintField();
+
+        repaintGameField();
         setKeyBindings();
 
-        restartButton.addMouseListener(new MouseListener() {
+        customButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 restartGame();
@@ -366,7 +360,7 @@ public class Main extends JFrame{
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(Main::runGame);
+        javax.swing.SwingUtilities.invokeLater(Main::createGame);
     }
 
 }

@@ -1,20 +1,19 @@
-package ru.thomaskohouse;
+package ru.thomaskohouse.ui.elements;
 
 import ru.thomaskohouse.enums.PaletteColors;
+import ru.thomaskohouse.enums.Sizes;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Rectangle;
 
 public class RoundedRectangleVault extends RoundedRectangle {
     private int value;
 
-    RoundedRectangleVault(int rectX, int rectY, int width, int height, int arcWidth, int arcHeight, Color color) {
+    public RoundedRectangleVault(int rectX, int rectY, int width, int height, int arcWidth, int arcHeight, Color color) {
         super(rectX, rectY, width, height, arcWidth, arcHeight, color);
         this.value = 0;
-    }
-
-    RoundedRectangleVault(int rectX, int rectY, int width, int height, int arcWidth, int arcHeight, Color color, int value) {
-            super(rectX, rectY, width, height, arcWidth, arcHeight, color);
-            this.value = value;
     }
 
     public void setValue(int value) {
@@ -44,13 +43,13 @@ public class RoundedRectangleVault extends RoundedRectangle {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         if (value != -1) {
             super.paintComponent(g);
             g.setColor(defineColor());
             g.fillRoundRect(rectX, rectY, width, height, arcWidth, arcHeight);
             g.setColor(Color.WHITE);
-            g.setFont(new Font("Arial", Font.PLAIN, 40));
+            g.setFont(new Font("Arial", Font.PLAIN, Sizes.RECTANGLE_VAULT_FONT.getValue()));
             if (value < 10)
                 g.drawString(String.valueOf(value), getWidth() / 2 - 10, getHeight() / 2 + 10 );
             else if (value < 100)
@@ -63,7 +62,7 @@ public class RoundedRectangleVault extends RoundedRectangle {
         }
     }
 
-    public void moveTo(int xStep, int yStep, int xLeftLimit, int xRightLimit, int yUpLimit, int yDownLimit){
+    public void move(int xStep, int yStep, int xLeftLimit, int xRightLimit, int yUpLimit, int yDownLimit){
         Rectangle currentBounds = getBounds();
         if (currentBounds.x + xStep > xRightLimit){
             currentBounds.x = xRightLimit;
