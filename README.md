@@ -1,5 +1,6 @@
 # Клон игры 2048 (Java + Swing, с базовой анимацией перемещения плиток)
 
-![](/screenshoot/Screenshot from 2024-05-18 01-04-43.png)
 
 Управление - клавиши `W`, `A`, `S`, `D` или на стрелки
+
+![](/home/andreyoskin/IdeaProjects/TFE-pc/Screenshot.png)
